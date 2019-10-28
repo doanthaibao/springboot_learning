@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@EntityScan(basePackages = {"bao.doan.learning.model"})
 public class LearningApplication {
 
 	public static void main(String[] args) {

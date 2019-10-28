@@ -1,5 +1,6 @@
 package bao.doan.learning.controller;
 
+import bao.doan.learning.model.AcmeProperties;
 import bao.doan.learning.model.User;
 import bao.doan.learning.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -24,6 +25,9 @@ public class Test {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    AcmeProperties acmeProperties;
 
     @GetMapping(path = "/test/user")
     @ApiOperation(
@@ -54,6 +58,37 @@ public class Test {
     public ResponseEntity<String> postUser(@RequestBody @Valid User user){
         log.info("Post data to user {}", user);
         return new ResponseEntity<String>(HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/test/security")
+    @ApiOperation(
+            value = "Get security enable or not",
+            code = 200,
+            extensions = {
+                    @Extension(name = "external", properties = {
+                            @ExtensionProperty(name = "context", value = "/test"),
+                            @ExtensionProperty(name = "isPublished", value = "true")
+                    })
+            })
+
+    public boolean getSecurity(){
+        return acmeProperties.isEnabled();
+    }
+
+
+    @GetMapping(path = "/test/security/detail")
+    @ApiOperation(
+            value = "Get security",
+            code = 200,
+            extensions = {
+                    @Extension(name = "external", properties = {
+                            @ExtensionProperty(name = "context", value = "/test"),
+                            @ExtensionProperty(name = "isPublished", value = "true")
+                    })
+            })
+
+    public AcmeProperties.Security getSecurityDetail(){
+        return acmeProperties.getSecurity();
     }
 
 }
