@@ -1,5 +1,6 @@
 package bao.doan.learning.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,8 @@ import javax.validation.constraints.NotBlank;
 public class User {
     @NotBlank
     private String name;
+
     @Min(0)
+    @JsonIgnore
     private  int age;
 }
