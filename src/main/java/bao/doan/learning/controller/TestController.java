@@ -24,7 +24,7 @@ import java.util.Locale;
 
 @RestController
 @Slf4j
-public class Test {
+public class TestController {
 
     @Autowired
     UserService userService;
