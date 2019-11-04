@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 import java.net.InetAddress;
 import java.util.List;
 
-@ConstructorBinding
 @ConfigurationProperties("acme")
+@ConstructorBinding
 @AllArgsConstructor
 public class AcmeProperties {
     @Getter
