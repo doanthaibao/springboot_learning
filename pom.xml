@@ -22,6 +22,7 @@
 		<swagger.base-path>/test</swagger.base-path>
 		<swagger.title>Demo learning service</swagger.title>
 		<swagger.description>Description for demo service</swagger.description>
+		<surfire.plugin.version>2.20</surfire.plugin.version>
 	</properties>
 
 	<dependencies>
@@ -119,6 +120,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>${surfire.plugin.version}</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

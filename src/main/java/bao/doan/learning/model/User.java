@@ -1,25 +1,38 @@
 package bao.doan.learning.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Configuration;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-@Data
 @Builder
-@Configuration
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class User {
     @NotBlank
     private String name;
 
-    @Min(0)
-    @JsonIgnore
-    private  int age;
+    @Email (message = "Invalid email address")
+    private  String email;
+
+    @NotNull
+   // @JsonIgnore
+    private boolean isVerified;
+
+   // @JsonIgnore
+    private String imageUrl;
+
+    @NotBlank
+   // @JsonIgnore
+    private String password;
+
+    @NotBlank
+    //@JsonIgnore
+    private String provider;
+
+    @NotBlank
+    //@JsonIgnore
+    private String providerId;
 }
