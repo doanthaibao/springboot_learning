@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +24,14 @@ public class UserService {
                         .email(item.getEmail())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public User getUser(Long id) throws Exception {
+        Optional<bao.doan.learning.domain.User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            return User.builder().name(user.get().getName()).email(user.get().getEmail()).build();
+        }
+        throw new Exception("There are no item with id: " + id);
     }
 
     public boolean addNewUser(User user) {

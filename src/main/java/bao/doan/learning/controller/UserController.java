@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -56,4 +57,22 @@ public class UserController {
         log.info("Request get all user {}");
         return new ResponseEntity(userService.getUsers(), HttpStatus.OK);
     }
+
+
+    @GetMapping(path = "/users/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(
+            value = "Get user by Id",
+            code = 200,
+            extensions = {
+                    @Extension(name = "external", properties = {
+                            @ExtensionProperty(name = "context", value = "/users/{id}"),
+                            @ExtensionProperty(name = "isPublished", value = "true")
+                    })
+            })
+    public ResponseEntity<User> getUser(@PathVariable @Valid Long id) throws Exception {
+        log.info("Request get user by Id {}", id);
+        return new ResponseEntity(userService.getUser(id), HttpStatus.OK);
+    }
+
 }
