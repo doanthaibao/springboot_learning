@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
@@ -70,7 +71,7 @@ public class UserController {
                             @ExtensionProperty(name = "isPublished", value = "true")
                     })
             })
-    public ResponseEntity<User> getUser(@PathVariable @Valid Long id) throws Exception {
+    public ResponseEntity<User> getUser(@PathVariable @Valid @Min(0) Long id) throws Exception {
         log.info("Request get user by Id {}", id);
         return new ResponseEntity(userService.getUser(id), HttpStatus.OK);
     }

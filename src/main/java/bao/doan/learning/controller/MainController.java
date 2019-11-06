@@ -26,7 +26,7 @@ public class MainController {
     @Autowired
     MessageSource messageSource;
 
-    @GetMapping(path = "/test/security")
+    @GetMapping(path = "/main/security")
     @ApiOperation(
             value = "Get security enable or not",
             code = 200,
@@ -41,7 +41,7 @@ public class MainController {
         return acmeProperties.isEnabled();
     }
 
-    @GetMapping(path = "/test/security/detail")
+    @GetMapping(path = "/main/security/detail")
     @ApiOperation(
             value = "Get security",
             code = 200,
@@ -56,7 +56,7 @@ public class MainController {
         return acmeProperties.getSecurity();
     }
 
-    @GetMapping(path = "/test/unit")
+    @GetMapping(path = "/main/unit")
     @ApiOperation(
                        value = "Get temperature unit",
             code = 200,
@@ -71,7 +71,7 @@ public class MainController {
         return temperatureConfig.getUnit();
     }
 
-    @GetMapping("/test/greeting")
+    @GetMapping("/main/greeting")
     public String getGreeting(Locale locale){
         return messageSource.getMessage("title.greeting", null, locale);
     }
