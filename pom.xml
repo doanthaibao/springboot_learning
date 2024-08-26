@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.M3</spring-cloud.version>
-		<swagger.version>2.9.2</swagger.version>
+		<swagger.version>2.10.0</swagger.version>
 		<swagger.base-package>bao.doan.learning.controller</swagger.base-package>
 		<swagger.base-path>/test</swagger.base-path>
 		<swagger.title>Demo learning service</swagger.title>
